@@ -1,0 +1,27 @@
+<!-- See models > User.js and controllers > UserController.js -->
+
+<form action="/user/create" method="POST">
+  <h2>Create an account</h2>
+
+  <% if(flash && flash.err) { %>
+    <ul>
+  <% Object.keys(flash.err).forEach(function(error) { %>
+    <li><%- JSON.stringify(flash.err[error]) %></li>
+  <% }) %>
+  </ul>
+  <% } %>
+
+
+  <input type="text" placeholder="Your name" name="name">
+  <input type="text" placeholder="Your title" name="title">
+  <input type="email" placeholder="Email address" name="email">
+  <input type="password" placeholder="Password" name="password">
+  <input type="password" placeholder="Password confirmation" name="confirmation">
+
+  <br>
+
+  <input type="submit" value="Create Account">
+
+  <!-- To prevent cross-site request forgery, see config > csrf.js -->
+  <input type="hidden" name="_csrf" value="<%= _csrf %>">
+</form>

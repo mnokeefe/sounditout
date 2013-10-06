@@ -1,0 +1,19 @@
+<form action="/session/create" method="POST">
+  <h2>Please sign in</h2>
+
+  <% if(flash && flash.err) { %>
+  <ul>
+  <% Object.keys(flash.err).forEach(function(error) { %>
+    <li><%- JSON.stringify(flash.err[error]) %></li>
+  <% }) %>
+  </ul>
+  <% } %>
+
+  <input type="email" placeholder="Email address" name="email">
+  <input type="password" placeholder="Password" name="password">
+  <input type="submit" value="Sign in">
+  
+  <!-- To prevent cross-site request forgery, see config > csrf.js -->
+  <input type="hidden" name="_csrf" value="<%= _csrf %>">
+
+</form>
