@@ -18,8 +18,9 @@ module.exports = {
       required: true
     },
 
-    title: {
-      type: 'string'
+    surname: {
+      type: 'string',
+      required: true
     },
 
     admin: {

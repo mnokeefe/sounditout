@@ -1,0 +1,26 @@
+<!-- See models > User.js and controllers > UserController.js -->
+
+<form action="/instrument/create" method="POST">
+  <h2>Add an instrument</h2>
+
+  <% if(flash && flash.err) { %>
+    <ul>
+  <% Object.keys(flash.err).forEach(function(error) { %>
+    <li><%- JSON.stringify(flash.err[error]) %></li>
+  <% }) %>
+  </ul>
+  <% } %>
+
+
+  <input type="text" placeholder="Type" name="type">
+  <input type="text" placeholder="Brand" name="brand">
+  <input type="text" placeholder="Serial number" name="serialNumber">
+  <input type="textarea" placeholder="Include the model and any important modifications and identifying marks" name="description">
+
+  <br>
+
+  <input type="submit" value="Add instrument">
+
+  <!-- To prevent cross-site request forgery, see config > csrf.js -->
+  <input type="hidden" name="_csrf" value="<%= _csrf %>">
+</form>

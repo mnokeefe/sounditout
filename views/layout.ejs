@@ -33,31 +33,26 @@
   </head>
 
   <body>
+    <header class="top-bar">
+      <div class="top-bar--container">
+        <span class="brand alpha">Sound it out</span>
 
-    <span class="brand alpha">Sound it out</span>
+        <span class="sign-in">
+          <% if (session.authenticated) { %>
+            <a href="/user/show/<%= session.User.id %>"><%= session.User.name %></a>
+            <a href="/session/destroy">Sign out</a>
+          <% } %>
 
-    <nav>
-      <% if (session.authenticated) { %>
-        <a href="/user/show/<%= session.User.id %>"><%= session.User.name %></a>
-        <a href="/session/destroy">Sign out</a>
-      <% } %>
-
-      <% if (session.authenticated && session.User.admin) { %>
-        <a href="/user">User administration</a>
-      <% } %>
-
-      <% if (!session.authenticated) { %>
-        <form action="/session/create" method="POST">
-          <input type="email" placeholder="Email address" name="email">
-          <input type="password" placeholder="Password" name="password">
-          <input type="submit" value="Sign in">
-          <input type="hidden" name="_csrf" value="<%= _csrf %>">
-        </form>
-      <% } %>
-    </nav>
-
-    <%- body %>
-
+          <% if (session.authenticated && session.User.admin) { %>
+            <a href="/user">User administration</a>
+          <% } %>
+        </span>
+      </div>
+    </header>
+    <section>
+      <%- body %>
+    </section>
+    
 
 
     <!--

@@ -17,15 +17,35 @@ html {
   background: $grey;
 }
 
-body {
+section {
   @include outer-container;
-  margin-top: em($base-line-height);
 }
 
 .button {
   @include button;
 }
 
+
+// Top bar
+.top-bar {
+  background: $black;
+}
+
+.top-bar--container {
+  @include outer-container;
+}
+
 .brand {
+  color: $white;
   font-family: $serif;
+  line-height: 2;
+}
+
+.sign-in {
+  float: right;
+  a {
+    margin-left: 2em;
+    line-height: 4em;
+    color: $white;
+  }
 }
